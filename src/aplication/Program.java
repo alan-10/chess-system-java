@@ -1,15 +1,15 @@
 package aplication;
 
-import boardgane.Position;
+import chess.ChessMatch;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
 		
-	Position positon = new Position(1, 4);
+	ChessMatch chessMatch = new ChessMatch();
 	
-	System.out.println(positon);
+	UI.printBoard(chessMatch.getPieces());
 
 	}
 
