@@ -1,5 +1,7 @@
 package boardgane;
 
+
+
 public class Board {
 
 	private int rows;
@@ -32,16 +34,17 @@ public class Board {
 
 		return this.pieces[rown][collumn];
 	}
+	
 
 	public Piece piece(Position position) {
-
 		if (!positionExists(position)) {
 			throw new BoardException("Positon not on the board");
 		}
-		
 		return pieces[position.getRow()][position.getCollunm()];
 	}
-
+	
+	
+	
 	public void placePiece(Piece piece, Position position) {
 		
 		if(thereIsAPiece(position)) {
@@ -50,6 +53,26 @@ public class Board {
 		
 		pieces[position.getRow()][position.getCollunm()] = piece;
 		piece.position = position;
+	}
+	
+	public Piece removePiece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Positon not on the board");
+		}
+		
+		if(piece(position) == null) {
+			return null;
+		}
+		
+		
+		Piece pieceToRemove = piece(position);
+		
+		pieceToRemove.position = null;
+		
+		pieces[position.getRow()][position.getCollunm()] = null;
+		
+		return pieceToRemove;
+		
 	}
 
 	private boolean positionExists(int row, int collumn) {
@@ -60,7 +83,7 @@ public class Board {
 		return positionExists(position.getRow(), position.getCollunm());
 	}
 
-	private boolean thereIsAPiece(Position position) {
+	public boolean thereIsAPiece(Position position) {
 		if(!positionExists(position)) {
 			throw new BoardException("Positon not on the board");
 		}

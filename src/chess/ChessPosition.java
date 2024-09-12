@@ -27,9 +27,7 @@ public class ChessPosition {
 		return row;
 	}
 
-	protected Position toPosition() {
-//		System.out.println("row: " + row + " column: " + column );
-//		System.out.println("8 - row: " + (8 - row) + " column - a: " + (column - 'a'));
+	protected  Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
 
